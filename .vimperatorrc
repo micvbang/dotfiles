@@ -1,0 +1,6 @@
+nnoremap <esc> :noh<return><esc>
+map ,l :js rdb.firefox.overlay.read_later()<CR>
+map ,r :js rdb.firefox.overlay.read_now()<CR>
+map ,p :js sendtophone.onToolbarButtonCommand()<CR>
+map ,s :save<CR>
+set gui=nonavigation

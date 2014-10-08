@@ -1,0 +1,26 @@
+[user]
+	email = michael@katnegermis.dk
+	name = Michael Bang
+[alias]
+    s = status -s
+    cm = commit -m
+    cam = commit -am
+    co = checkout
+    cob = checkout -b
+    ca = commit -a
+    c = commit
+    b = branch
+    ba = branch -a
+    f = fetch
+    pu = push
+    fb = g checkout -b $1 master
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+[merge]
+	tool = meld
+[core]
+	excludesfile = ~/.gitignore
+[push]
+	default = simple

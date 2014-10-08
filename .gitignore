@@ -1,0 +1,4 @@
+.fuse_*
+.venv
+.svn/
+.fuse_*
