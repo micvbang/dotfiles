@@ -1,2 +1,4 @@
 clear lock
 add control = Caps_Lock
+keycode 112 = Next NoSymbol NoSymbol NoSymbol
+keycode 117 = Prior NoSymbol NoSymbol NoSymbol
