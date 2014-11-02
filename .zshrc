@@ -95,6 +95,10 @@ backup_to() {
     rsync -va --delete --delete-excluded /media/katnegermis/storage/Dropbox/ $BACKUPPATH/backup_$DATE
 }
 
+todo_today_alias() {
+    DATE=$(date +%y.%m.%d)
+    vim ~/todo/todo_$DATE
+}
 
 ordnet_alias() {
     xdg-open "http://ordnet.dk/ddo/ordbog?query="$@
@@ -108,7 +112,7 @@ pandocpdf_alias() {
 
 
 #### Aliases
-alias todo="vi ~/dropbox/todo.txt"
+alias todo="vi ~/todo/todo.txt"
 alias se=/media/katnegermis/storage/dropbox/koding/python/series_everything/tvshowhelper.py
 alias s=subl
 alias zshrc="s ~/.zshrc"
@@ -127,6 +131,7 @@ alias pdf=pandocpdf_alias
 alias apnews='its -b 56094'
 alias sanews='its -b 56120'
 alias nots='its -n'
+alias todotoday=todo_today_alias
 
 # Load the secret stuff
 source ~/.zshrc_secret

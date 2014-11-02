@@ -13,7 +13,7 @@
     ba = branch -a
     f = fetch
     pu = push
-    fb = g checkout -b $1 master
+    fb = !git checkout -b $1 master
 [color]
     branch = auto
     diff = auto
