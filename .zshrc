@@ -130,6 +130,7 @@ alias apnews='its -b 56094'
 alias sanews='its -b 56120'
 alias nots='its -n'
 alias todotoday=todo_today_alias
+alias v=vim
 
 alias lsa='ls -lah'
 alias l='ls'
