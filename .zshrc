@@ -65,6 +65,7 @@ export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 # Add GOPATH to PATH
 export GOPATH=/home/katnegermis/dropbox/koding/go
+export GOBIN=/home/katnegermis/dropbox/koding/go/bin
 #export GOPATH=/usr/local/go
 export PATH=$PATH:/home/katnegermis/dropbox/koding/go/bin
 export PATH=$PATH:/usr/local/go/bin

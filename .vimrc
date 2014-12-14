@@ -12,6 +12,9 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'majutsushi/tagbar'
 Plugin 'fatih/molokai'
 Plugin 'Lokaltog/powerline-fonts'
+Plugin 'SirVer/ultisnips'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
 
 call vundle#end()
 
@@ -51,6 +54,7 @@ set hlsearch
 
 
 "vim-go bindings
+let g:go_auto_type_info = 1
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
