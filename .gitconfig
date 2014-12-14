@@ -19,7 +19,7 @@
     diff = auto
     status = auto
 [merge]
-	tool = meld
+	tool = kdiff3
 [core]
 	excludesfile = ~/.gitignore
 [push]
