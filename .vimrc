@@ -15,10 +15,12 @@ Plugin 'Lokaltog/powerline-fonts'
 Plugin 'SirVer/ultisnips'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
+Plugin 'tomtom/tcomment_vim'
 
 call vundle#end()
 
 set t_Co=256
+set encoding=utf-8
 "set lines=45 columns=110
 "remove EOL white spaces.
 autocmd BufWritePre * :%s/\s\+$//e
@@ -43,6 +45,7 @@ set tabstop=4
 colorscheme molokai
 set shiftwidth=4
 set expandtab
+set smarttab
 set t_Co=256
 set backspace=indent,eol,start
 filetype plugin on
