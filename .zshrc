@@ -46,8 +46,7 @@ ZSH_THEME="katnegermis"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git command-not-found pip screen virtualenvwrapper virtualenv virtualenv-prompt)
-# Print newline after each command in shell
-precmd() { print "" }
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -56,6 +55,9 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 ## Add autojump
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
 
+# Automatically load tmux
+[[ $- != *i* ]] && return
+[[ -z "$TMUX" ]] && exec tmux
 
 #### Exports
 export koding='~/dropbox/koding/'
@@ -63,10 +65,12 @@ export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 # Add GOPATH to PATH
 export GOPATH=/home/katnegermis/dropbox/koding/go
-export PATH=$PATH:$GOPATH/bin
+#export GOPATH=/usr/local/go
+export PATH=$PATH:/home/katnegermis/dropbox/koding/go/bin
+export PATH=$PATH:/usr/local/go/bin
 # add cabal dir to path (haskell-thing for pandoc)
 export PATH=$HOME/.cabal/bin:$PATH
-export LESS=-Ri
+export LESS='-Ri'
 
 
 #### Function declarations
@@ -104,12 +108,6 @@ ordnet_alias() {
     xdg-open "http://ordnet.dk/ddo/ordbog?query="$@
 }
 
-pandocpdf_alias() {
-    filename="${1%.*}"
-
-    pandoc $1 -o $filename.pdf -V geometry:margin=1.5in
-}
-
 
 #### Aliases
 alias todo="vi ~/todo/todo.txt"
@@ -133,6 +131,26 @@ alias sanews='its -b 56120'
 alias nots='its -n'
 alias todotoday=todo_today_alias
 
+alias lsa='ls -lah'
+alias l='ls'
+alias ll='ls -lh'
+alias la='ls -lAh'
+
 # Load the secret stuff
 source ~/.zshrc_secret
 . /usr/share/autojump/autojump.sh
+
+# Set dynamic terminal title in urxvt
+case "$TERM" in
+ xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]"
+    ;;
+ *)
+    ;;
+esac
+
+# Add git-stuff to tmux status bar.
+source ~/dotfiles/.tmux-git/tmux-git.sh
+precmd() {
+    update_tmux
+}
