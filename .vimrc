@@ -52,6 +52,10 @@ filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 au BufRead,BufNewFile *.md set filetype=markdown
 set hlsearch
+set ttyfast " u got a fast terminal
+set synmaxcol=128
+set ttyscroll=3
+set lazyredraw " to avoid scrolling problems
 
 :nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 
