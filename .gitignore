@@ -13,3 +13,4 @@
 *.toc
 *.pdf
 .vim/bundle/*
+*.swp
