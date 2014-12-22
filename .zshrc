@@ -132,6 +132,7 @@ alias sanews='its -b 56120'
 alias nots='its -n'
 alias todotoday=todo_today_alias
 alias v=vim
+alias cb='xclip -sel clip'
 
 alias lsa='ls -lah'
 alias l='ls'
