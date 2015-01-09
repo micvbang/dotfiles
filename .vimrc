@@ -16,6 +16,8 @@ Plugin 'SirVer/ultisnips'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'ervandew/supertab'
+Plugin 'honza/vim-snippets'
 
 call vundle#end()
 
@@ -56,12 +58,14 @@ set ttyfast " u got a fast terminal
 set synmaxcol=128
 set ttyscroll=3
 set lazyredraw " to avoid scrolling problems
+setlocal nowrap
+set ruler
 
 :nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 
 
 "vim-go bindings
-let g:go_auto_type_info = 1
+let g:go_fmt_command = "goimports"
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
@@ -74,6 +78,16 @@ au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+"ultisnips bindings
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 "vim-tmux window panning
 if $TMUX != ''
@@ -127,6 +141,9 @@ function ToggleWrap()
     silent! iunmap <buffer> <Down>
     silent! iunmap <buffer> <Home>
     silent! iunmap <buffer> <End>
+    noremap  <buffer> <silent> k k
+    noremap  <buffer> <silent> j j
+
   else
     echo "Wrap ON"
     setlocal wrap linebreak nolist
@@ -140,8 +157,8 @@ function ToggleWrap()
     inoremap <buffer> <silent> <Down> <C-o>gj
     inoremap <buffer> <silent> <Home> <C-o>g<Home>
     inoremap <buffer> <silent> <End>  <C-o>g<End>
+    noremap  <buffer> <silent> k gk
+    noremap  <buffer> <silent> j gj
   endif
 endfunction
-noremap  <buffer> <silent> k gk
-noremap  <buffer> <silent> j gj
 
