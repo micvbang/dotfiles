@@ -22,5 +22,6 @@
 	tool = kdiff3
 [core]
 	excludesfile = ~/.gitignore
+    editor = vim
 [push]
 	default = simple
