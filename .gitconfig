@@ -2,6 +2,7 @@
 	email = michael@katnegermis.dk
 	name = Michael Bang
 [alias]
+    a = add -A
     s = status -s
     cm = commit -m
     cam = commit -am

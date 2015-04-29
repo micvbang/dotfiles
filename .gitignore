@@ -12,5 +12,11 @@
 *.synctex.gz
 *.toc
 *.pdf
+*.thm
 .vim/bundle/*
+// vim-stuff
 *.swp
+*.swn
+*.swo
+// python-stuff
+*.pyc
