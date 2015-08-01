@@ -23,7 +23,7 @@ call vundle#end()
 
 set t_Co=256
 set encoding=utf-8
-"set lines=45 columns=110
+set columns=80
 "remove EOL white spaces.
 autocmd BufWritePre * :%s/\s\+$//e
 "set color of indent lines
@@ -35,14 +35,16 @@ let g:ctrlp_custom_ignore = {
 let NERDTreeIgnore = ['\.pyc$']
 "hotkeys for nerdtree and tlist
 map <C-k><C-b> :NERDTreeToggle<CR>
-nmap <F8> :TagbarToggle<CR>
-map <C-k><C-n> :TlistToggle<CR>
+map <C-k><C-n> :TagbarToggle<CR>
 
 let g:rehash256 = 1
 set number
 syntax on
 set smartindent
+set smartcase
 set autoindent
+set nobackup
+set noswapfile
 set tabstop=4
 colorscheme molokai
 set shiftwidth=4
@@ -64,8 +66,12 @@ set ruler
 :nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 
 
+"Activate spell checking in .md documents.
+autocmd BufRead,BufNewFile *.md setlocal spell
+
 "vim-go bindings
 let g:go_fmt_command = "goimports"
+let g:go_auto_type_info = 0
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
