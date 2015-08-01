@@ -15,6 +15,7 @@
     f = fetch
     pu = push
     fb = !git checkout -b $1 master
+    zip = archive --format=zip -9
 [color]
     branch = auto
     diff = auto
