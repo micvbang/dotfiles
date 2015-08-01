@@ -72,6 +72,8 @@ export PATH=$PATH:/usr/local/go/bin
 # add cabal dir to path (haskell-thing for pandoc)
 export PATH=$HOME/.cabal/bin:$PATH
 export LESS='-Ri'
+export EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
 
 
 #### Function declarations
@@ -114,7 +116,7 @@ ordnet_alias() {
 alias todo="vi ~/todo/todo.txt"
 alias se=/media/katnegermis/storage/dropbox/koding/python/series_everything/tvshowhelper.py
 alias s=subl
-alias zshrc="s ~/.zshrc"
+alias zshrc="vim ~/.zshrc"
 alias o=xdg-open
 alias sshfs_do="sshfs do:/home/katnegermis/downloads /media/katnegermis/server"
 alias backuphdd=backup_to_hdd_alias
@@ -127,8 +129,6 @@ alias urlencode=urlencode_alias
 alias godoc=godoc_alias
 alias ordnet=ordnet_alias
 alias pdf=pandocpdf_alias
-alias apnews='its -b 56094'
-alias sanews='its -b 56120'
 alias nots='its -n'
 alias todotoday=todo_today_alias
 alias v=vim
