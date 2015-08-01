@@ -1,0 +1,10 @@
+disp/15i $pc
+disp/16xw $sp
+disp $eflags
+disp/x $ebp
+disp/x $edi
+disp/x $esi
+disp/x $edx
+disp/x $ecx
+disp/x $ebx
+disp/x $eax
