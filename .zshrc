@@ -138,6 +138,7 @@ alias lsa='ls -lah'
 alias l='ls'
 alias ll='ls -lh'
 alias la='ls -lAh'
+alias sshpw='ssh -o PreferredAuthentications=password'
 
 # Load the secret stuff
 source ~/.zshrc_secret
