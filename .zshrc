@@ -53,7 +53,8 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 ## Add autojump
-[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
+
+[[ -s /home/katnegermis/.autojump/etc/profile.d/autojump.sh ]] && source /home/katnegermis/.autojump/etc/profile.d/autojump.sh
 
 # Automatically load tmux
 [[ $- != *i* ]] && return
@@ -113,8 +114,10 @@ ordnet_alias() {
 
 
 #### Aliases
+alias vi=vim
 alias todo="vi ~/todo/todo.txt"
 alias se=/media/katnegermis/storage/dropbox/koding/python/series_everything/tvshowhelper.py
+alias wn="se $@ --watch-next"
 alias s=subl
 alias zshrc="vim ~/.zshrc"
 alias o=xdg-open
@@ -138,10 +141,13 @@ alias lsa='ls -lah'
 alias l='ls'
 alias ll='ls -lh'
 alias la='ls -lAh'
+alias sshpw='ssh -o PreferredAuthentications=password '
+alias scppw='scp -o PreferredAuthentications=password '
+alias ord='python /home/katnegermis/koding/python/ordbogen.com/main.py '
 
 # Load the secret stuff
 source ~/.zshrc_secret
-. /usr/share/autojump/autojump.sh
+#. /usr/share/autojump/autojump.sh
 
 # Set dynamic terminal title in urxvt
 case "$TERM" in
@@ -157,3 +163,5 @@ source ~/dotfiles/.tmux-git/tmux-git.sh
 precmd() {
     update_tmux
 }
+
+stty -ixon
