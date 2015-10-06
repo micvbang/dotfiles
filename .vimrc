@@ -3,6 +3,7 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'fatih/vim-go'
 Plugin 'kien/ctrlp.vim'
@@ -50,7 +51,6 @@ colorscheme molokai
 set shiftwidth=4
 set expandtab
 set smarttab
-set t_Co=256
 set backspace=indent,eol,start
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
