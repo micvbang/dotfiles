@@ -141,7 +141,7 @@ alias lsa='ls -lah'
 alias l='ls'
 alias ll='ls -lh'
 alias la='ls -lAh'
-alias sshpw='ssh -o PreferredAuthentications=password '
+alias sshpw='ssh -o PreferredAuthentications=password'
 alias scppw='scp -o PreferredAuthentications=password '
 alias ord='python /home/katnegermis/koding/python/ordbogen.com/main.py '
 
