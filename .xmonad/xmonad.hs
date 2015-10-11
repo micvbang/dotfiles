@@ -50,7 +50,7 @@ myLogHook h = dynamicLogWithPP $ defaultPP
     }
 
 leftDzen2 = "dzen2 -x '0' -y '0' -h '24' -w '960' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'"
-rightDzen2 = "date | dzen2 -p -x '960' -y '0' -w '960' -h '24' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' "
+rightDzen2 = "conky | dzen2 -p -x '960' -y '0' -w '960' -h '24' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' "
 
 myLayoutHook = avoidStruts (tiled ||| Mirror tiled)
    where
