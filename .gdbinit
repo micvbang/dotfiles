@@ -1,3 +1,5 @@
+source ~/tools/peda/peda.py
+
 set disassembly-flavor intel
 set disable-randomization off
 set pagination off
@@ -10,3 +12,4 @@ set history expansion
 
 # Output format
 set output-radix 0x1
+
