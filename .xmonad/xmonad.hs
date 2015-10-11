@@ -50,7 +50,7 @@ myLogHook h = dynamicLogWithPP $ defaultPP
     }
 
 leftDzen2 = "dzen2 -x '0' -y '0' -h '24' -w '960' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'"
-rightDzen2 = "date | dzen2 -x '960' -y '0' -w '960' -h '24' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' "
+rightDzen2 = "date | dzen2 -p -x '960' -y '0' -w '960' -h '24' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' "
 
 myLayoutHook = avoidStruts (tiled ||| Mirror tiled)
    where
@@ -70,13 +70,19 @@ main = do
         , layoutHook = myLayoutHook
         , manageHook = manageDocks <+> manageHook defaultConfig
         }
-        `removeKeys` [(mod1Mask, n) | n <- [xK_1 .. xK_9]]
+        `removeKeys` [ (mod1Mask, n) | n <- [xK_1 .. xK_9]]
+        `removeKeys` [(mod1Mask, xK_h)]
+        `removeKeys` [(mod1Mask, xK_l)]
+        `removeKeys` [(mod1Mask, xK_j)]
+        `removeKeys` [(mod1Mask, xK_k)]
     where
         mykeys conf@(XConfig {modMask = modm}) = M.fromList $
              [ ((modm, xK_e), spawn "firefox") -- Start firefox
              , ((modm, xK_w), spawn "gnome-calculator") -- Start calculator
              , ((modm, xK_r), spawn $ XMonad.terminal conf) -- Start terminal
              , ((modm, xK_F4), kill) -- %! Close the focused window
+             , ((controlMask, xK_j), windows W.focusDown) -- %! Move focus to the next window
+             , ((controlMask, xK_k), windows W.focusUp  ) -- %! Move focus to the previous window
              ]
              ++
             [((m .|. controlMask, k), windows $ f i)
