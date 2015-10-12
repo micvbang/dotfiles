@@ -92,7 +92,8 @@ main = do
              , ((modm, xK_F4), kill) -- %! Close the focused window
              , ((controlMask, xK_j), windows W.focusDown) -- %! Move focus to the next window
              , ((controlMask, xK_k), windows W.focusUp  ) -- %! Move focus to the previous window
-             , ((modm  .|. shiftMask, xK_r),  scratchpadSpawnAction conf)
+             , ((modm .|. shiftMask, xK_r),  scratchpadSpawnAction conf)
+             , ((modm .|. shiftMask, xK_n), spawn "~/.xmonad/layout_switch.sh")
              ]
              ++
             [((m .|. controlMask, k), windows $ f i)
