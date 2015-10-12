@@ -75,6 +75,7 @@ export PATH=$HOME/.cabal/bin:$PATH
 export LESS='-Ri'
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
+export GREP_OPTIONS="--color=always"
 
 
 #### Function declarations
