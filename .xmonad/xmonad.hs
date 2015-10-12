@@ -12,6 +12,7 @@ import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
 import XMonad.Layout.NoBorders
+import XMonad.Util.Scratchpad
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
@@ -52,9 +53,17 @@ myLogHook h = dynamicLogWithPP $ defaultPP
 leftDzen2 = "dzen2 -x '0' -y '0' -h '24' -w '960' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'"
 rightDzen2 = "conky | dzen2 -p -x '960' -y '0' -w '960' -h '24' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' "
 
-myLayoutHook = avoidStruts (tiled ||| Mirror tiled)
+myLayoutHook = avoidStruts (tiled ||| Mirror tiled ||| Full)
    where
      tiled = Tall 1 (3/100) (3/5)
+
+manageScratchPad :: ManageHook
+manageScratchPad = scratchpadManageHook (W.RationalRect l t w h)
+  where
+    h = 0.5
+    w = 0.5
+    t = 0.25
+    l = 0.25
 
 main = do
     dzenLeftBar <- spawnPipe leftDzen2
@@ -68,7 +77,7 @@ main = do
         , keys               = \c -> mykeys c `M.union` keys defaultConfig c
         , logHook             = myLogHook dzenLeftBar
         , layoutHook = myLayoutHook
-        , manageHook = manageDocks <+> manageHook defaultConfig
+        , manageHook = manageHook defaultConfig <+> manageDocks <+> manageScratchPad
         }
         `removeKeys` [ (mod1Mask, n) | n <- [xK_1 .. xK_9]]
         `removeKeys` [(mod1Mask, xK_h)]
@@ -83,6 +92,7 @@ main = do
              , ((modm, xK_F4), kill) -- %! Close the focused window
              , ((controlMask, xK_j), windows W.focusDown) -- %! Move focus to the next window
              , ((controlMask, xK_k), windows W.focusUp  ) -- %! Move focus to the previous window
+             , ((modm  .|. shiftMask, xK_r),  scratchpadSpawnAction conf)
              ]
              ++
             [((m .|. controlMask, k), windows $ f i)
