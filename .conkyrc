@@ -6,4 +6,4 @@
  use_spacer none
 
  TEXT
-(${wireless_essid wlan0}, ${wireless_link_qual_perc wlan0}%)    (${battery BAT0}, ${battery BAT1})      ^fg()${time %a %b %d %H:%M}
+(${wireless_essid wlan0})    (${battery BAT0}, ${battery BAT1})      ^fg()${time %a %b %d %H:%M}
