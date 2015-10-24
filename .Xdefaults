@@ -18,7 +18,7 @@ URxvt.internalBorder: 3
 URxvt.lineSpace: 0
 ! Fonts
 URxvt.allow_bold: false
-URxvt*font: xft:Source\ Code\ Pro\ Medium\ for\ Powerline:pixelsize=20
+URxvt*font: xft:Source\ Code\ Pro\ Medium\ for\ Powerline:pixelsize=18
 URxvt*letterSpace: -1
 ! Scrollbar
 URxvt.scrollStyle: rxvt
