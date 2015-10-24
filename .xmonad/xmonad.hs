@@ -13,6 +13,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
 import XMonad.Layout.NoBorders
 import XMonad.Util.Scratchpad
+import XMonad.Hooks.EwmhDesktops
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
@@ -68,8 +69,8 @@ manageScratchPad = scratchpadManageHook (W.RationalRect l t w h)
 main = do
     dzenLeftBar <- spawnPipe leftDzen2
     dzenRightBar <- spawnPipe rightDzen2
-    xmonad $ defaultConfig
-        { borderWidth        = 1
+    xmonad $ ewmh defaultConfig
+        { borderWidth        = 2
         , terminal           = "urxvt"
         , normalBorderColor  = "#cccccc"
         , focusedBorderColor = "cd8b00"
@@ -78,6 +79,7 @@ main = do
         , logHook             = myLogHook dzenLeftBar
         , layoutHook = myLayoutHook
         , manageHook = manageHook defaultConfig <+> manageDocks <+> manageScratchPad
+        , handleEventHook = handleEventHook defaultConfig <+> fullscreenEventHook
         }
         `removeKeys` [ (mod1Mask, n) | n <- [xK_1 .. xK_9]]
         `removeKeys` [(mod1Mask, xK_h)]
@@ -94,6 +96,8 @@ main = do
              , ((controlMask, xK_k), windows W.focusUp  ) -- %! Move focus to the previous window
              , ((modm .|. shiftMask, xK_r),  scratchpadSpawnAction conf)
              , ((modm .|. shiftMask, xK_n), spawn "~/.xmonad/layout_switch.sh")
+             , ((modm, xK_Left), sendMessage Shrink)
+             , ((modm, xK_Right), sendMessage Expand)
              ]
              ++
             [((m .|. controlMask, k), windows $ f i)
