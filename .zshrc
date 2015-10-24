@@ -145,6 +145,9 @@ alias la='ls -lAh'
 alias sshpw='ssh -o PreferredAuthentications=password'
 alias scppw='scp -o PreferredAuthentications=password '
 alias ord='python /home/katnegermis/koding/python/ordbogen.com/main.py '
+alias suspend='sudo pm-suspend'
+alias arbtt-stats-today='arbtt-stats --filter "\$date >= $(date +%Y-%m-%d)"'
+alias arbtt-stats-24h='arbtt-stats --filter "\$sampleage <= 24:00"'
 
 # Load the secret stuff
 source ~/.zshrc_secret
