@@ -1,16 +1,24 @@
 #!/usr/bin/env python
 
 import codecs
+from os import path
 
-from pandocfilters import toJSONFilter, CodeBlock
+try:
+    from pandocfilters import toJSONFilter, CodeBlock
+except Exception, e:
+    print e
 
 
 def include(key, value, format, meta):
     if key == 'CodeBlock':
         ((id, classes, namevals), contents) = value
         files = [val for name, val in namevals if name == 'include']
-        # Use only first file.
-        with codecs.open(files[0], 'r', 'utf8') as f:
+
+        p = files[0] if files else ''
+        if not files or not path.exists(p):
+            return CodeBlock([id, classes, namevals], contents)
+
+        with codecs.open(p, 'r', 'utf8') as f:
             contents = f.read()
         return CodeBlock([id, classes, namevals], contents)
 
