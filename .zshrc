@@ -148,6 +148,8 @@ alias ord='python /home/katnegermis/koding/python/ordbogen.com/main.py '
 alias suspend='sudo pm-suspend'
 alias arbtt-stats-today='arbtt-stats --filter "\$date >= $(date +%Y-%m-%d)"'
 alias arbtt-stats-24h='arbtt-stats --filter "\$sampleage <= 24:00"'
+alias ida64='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.5/idaq64.exe'
+alias ida='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.5/idaq.exe'
 
 # Load the secret stuff
 source ~/.zshrc_secret
