@@ -1,1 +1,2 @@
 bind main F !?<git checkout %(commit)
+set wrap-lines = yes
