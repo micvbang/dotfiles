@@ -119,7 +119,7 @@ alias vi=vim
 alias todo="vi ~/todo/todo.txt"
 alias se=/media/katnegermis/storage/dropbox/koding/python/series_everything/tvshowhelper.py
 alias wn="se $@ --watch-next"
-alias s=subl
+alias s="apt-cache search"
 alias zshrc="vim ~/.zshrc"
 alias o=xdg-open
 alias sshfs_do="sshfs do:/home/katnegermis/downloads /media/katnegermis/server"
@@ -150,6 +150,10 @@ alias arbtt-stats-today='arbtt-stats --filter "\$date >= $(date +%Y-%m-%d)"'
 alias arbtt-stats-24h='arbtt-stats --filter "\$sampleage <= 24:00"'
 alias ida64='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.5/idaq64.exe'
 alias ida='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.5/idaq.exe'
+alias i='sudo apt-get install'
+alias wifi='sudo nmcli nm wifi '
+# alias wificonnect='nmcli dev wifi connect "$1" iface wlan0 '
+
 
 # Load the secret stuff
 source ~/.zshrc_secret
@@ -171,3 +175,7 @@ precmd() {
 }
 
 stty -ixon
+
+# if [ -f ~/.zsh_completion ]; then
+#     . ~/.zsh_completion
+# fi
