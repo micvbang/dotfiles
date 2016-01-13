@@ -12,13 +12,17 @@ Plugin 'scrooloose/syntastic'
 Plugin 'Yggdroot/indentLine'
 Plugin 'majutsushi/tagbar'
 Plugin 'fatih/molokai'
-Plugin 'Lokaltog/powerline-fonts'
+" Plugin 'Lokaltog/powerline-fonts'
 Plugin 'SirVer/ultisnips'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'ervandew/supertab'
 Plugin 'honza/vim-snippets'
+" Plugin 'vim-scripts/indentpython.vim'
+" Plugin 'nvie/vim-flake8'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 
@@ -54,10 +58,16 @@ set smarttab
 set backspace=indent,eol,start
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
+
+" markdown config
 au BufRead,BufNewFile *.md set filetype=markdown
+
+" python indentation config
+au BufNewFile,BufRead *.py set tabstop=4 | set softtabstop=4 | set shiftwidth=4 | set textwidth=110 | set expandtab | set autoindent | set fileformat=unix
+
 set hlsearch
 set ttyfast " u got a fast terminal
-set synmaxcol=128
+set synmaxcol=200
 set ttyscroll=3
 set lazyredraw " to avoid scrolling problems
 setlocal nowrap
@@ -94,6 +104,11 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let python_highlight_all=1
+
+" vim-airline status line stuff
+" let g:airline_powerline_fonts = 1
+set laststatus=2
 
 "vim-tmux window panning
 if $TMUX != ''
