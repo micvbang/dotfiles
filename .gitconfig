@@ -27,3 +27,5 @@
     editor = vim
 [push]
 	default = simple
+[filter "tabspace"]
+	clean = expand --tabs=4 --initial
