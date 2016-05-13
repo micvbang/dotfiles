@@ -23,6 +23,7 @@ Plugin 'honza/vim-snippets'
 " Plugin 'nvie/vim-flake8'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-dispatch'
 
 call vundle#end()
 
@@ -38,6 +39,7 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(pyc)$',
   \ }
 let NERDTreeIgnore = ['\.pyc$']
+"
 "hotkeys for nerdtree and tlist
 map <C-k><C-b> :NERDTreeToggle<CR>
 map <C-k><C-n> :TagbarToggle<CR>
@@ -58,18 +60,23 @@ set smarttab
 set backspace=indent,eol,start
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
+set splitright
+" relative line numbers
+set relativenumber
+set number
 
 " markdown config
 au BufRead,BufNewFile *.md set filetype=markdown
 
 " python indentation config
-au BufNewFile,BufRead *.py set tabstop=4 | set softtabstop=4 | set shiftwidth=4 | set textwidth=110 | set expandtab | set autoindent | set fileformat=unix
+au BufNewFile,BufRead *.py set tabstop=4 | set softtabstop=4 | set shiftwidth=4 | set expandtab | set autoindent | set fileformat=unix
 
 set hlsearch
 set ttyfast " u got a fast terminal
 set synmaxcol=200
 set ttyscroll=3
 set lazyredraw " to avoid scrolling problems
+
 setlocal nowrap
 set ruler
 
@@ -79,9 +86,16 @@ set ruler
 "Activate spell checking in .md documents.
 autocmd BufRead,BufNewFile *.md setlocal spell
 
+" easytags config
+let g:easytags_async = 1
+
 "vim-go bindings
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 0
+let g:go_fmt_autosave = 1
+let g:go_dispatch_enabled = 1
+let g:go_doc_command = "godoc"
+
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
