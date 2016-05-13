@@ -1,9 +1,9 @@
  background no
  out_to_console yes
  out_to_x no
- update_interval 1.0
+ update_interval 2.5
  total_run_times 0
  use_spacer none
 
  TEXT
-(${wireless_essid wlan0})    (${battery BAT0}, ${battery BAT1})      ^fg()${time %a %b %d %H:%M}
+${exec setxkbmap -query | grep layout | tr -s ' ' | cut -d' ' -f2}    (${wireless_essid wlan0})    (${battery BAT0}, ${battery BAT1})      ^fg()${time %a %b %d %H:%M}
