@@ -14,6 +14,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Layout.NoBorders
 import XMonad.Util.Scratchpad
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.SetWMName
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
@@ -61,16 +62,18 @@ myLayoutHook = avoidStruts (tiled ||| Mirror tiled ||| Full)
 manageScratchPad :: ManageHook
 manageScratchPad = scratchpadManageHook (W.RationalRect l t w h)
   where
-    h = 0.5
-    w = 0.5
-    t = 0.25
-    l = 0.25
+    h = 0.75
+    w = 0.75
+    t = 0.125
+    l = 0.125
 
 main = do
     dzenLeftBar <- spawnPipe leftDzen2
     dzenRightBar <- spawnPipe rightDzen2
     xmonad $ ewmh defaultConfig
-        { borderWidth        = 2
+        {
+        startupHook = setWMName "LG3D"
+        ,  borderWidth        = 1
         , terminal           = "urxvt"
         , normalBorderColor  = "#cccccc"
         , focusedBorderColor = "cd8b00"
