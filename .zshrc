@@ -66,12 +66,16 @@ export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 # Add GOPATH to PATH
 export GOPATH=/home/katnegermis/dropbox/koding/go
-export GOBIN=/home/katnegermis/dropbox/koding/go/bin
+export GOBIN=/opt/go/bin
+export GOROOT=/opt/go
 #export GOPATH=/usr/local/go
-export PATH=$PATH:/home/katnegermis/dropbox/koding/go/bin
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/opt/go/bin
+export SCALA_HOME=/opt/scala-2.11.8/
+export PATH=$PATH:$SCALA_HOME/bin/
 # add cabal dir to path (haskell-thing for pandoc)
 export PATH=$HOME/.cabal/bin:$PATH
+export PATH=$PATH:/opt/genymobile/genymotion
+export PATH=$PATH:/opt/ida
 export LESS='-Ri'
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
@@ -90,12 +94,12 @@ urlencode_alias() {
 }
 
 backup_to_hdd_alias() {
-    BACKUPPATH="/media/katnegermis/19C2500A39FCDBC5/"
+    BACKUPPATH="hjemme:/media/storage2/samba/backup/dropbox/"
     `backup_to`
 }
 
 backup_to_home_serv_alias() {
-    BACKUPPATH="/media/katnegermis/samba/backup/"
+    BACKUPPATH="hjemme:/media/storage2/samba/backup/dropbox/"
     `backup_to`
 }
 
@@ -148,11 +152,15 @@ alias ord='python /home/katnegermis/koding/python/ordbogen.com/main.py '
 alias suspend='sudo pm-suspend'
 alias arbtt-stats-today='arbtt-stats --filter "\$date >= $(date +%Y-%m-%d)"'
 alias arbtt-stats-24h='arbtt-stats --filter "\$sampleage <= 24:00"'
-alias ida64='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.5/idaq64.exe'
-alias ida='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.5/idaq.exe'
+# alias ida64='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.5/idaq64.exe'
+# alias ida='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.5/idaq.exe'
 alias i='sudo apt-get install'
 alias wifi='sudo nmcli nm wifi '
-# alias wificonnect='nmcli dev wifi connect "$1" iface wlan0 '
+alias wificonnect='nmcli dev wifi connect "$1" iface wlan0 '
+alias doirssi='ssh do -t screen -d -r irssi'
+alias mdsec='egrep -e "^(-------|=======|#{2,6})" -B 1 -A0 --color=never'
+alias mibado='ssh do -t ssh miba'
+alias mibahjemme='ssh hjemme -t ssh miba'
 
 
 # Load the secret stuff
