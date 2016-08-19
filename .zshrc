@@ -152,8 +152,8 @@ alias ord='python /home/katnegermis/koding/python/ordbogen.com/main.py '
 alias suspend='sudo pm-suspend'
 alias arbtt-stats-today='arbtt-stats --filter "\$date >= $(date +%Y-%m-%d)"'
 alias arbtt-stats-24h='arbtt-stats --filter "\$sampleage <= 24:00"'
-# alias ida64='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.5/idaq64.exe'
-# alias ida='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.5/idaq.exe'
+alias ida64='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.5/idaq64.exe'
+alias ida='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.5/idaq.exe'
 alias i='sudo apt-get install'
 alias wifi='sudo nmcli nm wifi '
 alias wificonnect='nmcli dev wifi connect "$1" iface wlan0 '
@@ -161,6 +161,7 @@ alias doirssi='ssh do -t screen -d -r irssi'
 alias mdsec='egrep -e "^(-------|=======|#{2,6})" -B 1 -A0 --color=never'
 alias mibado='ssh do -t ssh miba'
 alias mibahjemme='ssh hjemme -t ssh miba'
+alias dco=docker-compose
 
 
 # Load the secret stuff

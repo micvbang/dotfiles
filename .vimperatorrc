@@ -4,4 +4,5 @@ map ,r :js rdb.firefox.overlay.read_now()<CR>
 map ,p :js sendtophone.onToolbarButtonCommand()<CR>
 map ,b :js PinboardFXT.bookmarkCurrent()<CR>
 map ,s :save<CR>
-set gui=nonavigation
+set gui+=nonavigation
+set focuscontent

@@ -61,8 +61,6 @@ set backspace=indent,eol,start
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 set splitright
-" relative line numbers
-set relativenumber
 set number
 
 " markdown config
