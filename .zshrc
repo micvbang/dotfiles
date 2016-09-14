@@ -54,7 +54,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 ## Add autojump
 
-[[ -s /home/katnegermis/.autojump/etc/profile.d/autojump.sh ]] && source /home/katnegermis/.autojump/etc/profile.d/autojump.sh
+[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
 
 autoload -U compinit && compinit -u
 
@@ -67,7 +67,7 @@ export koding='~/dropbox/koding/'
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 # Add GOPATH to PATH
-export GOPATH=/home/katnegermis/dropbox/koding/go
+export GOPATH=~/dropbox/koding/go
 export GOBIN=/opt/go/bin
 export GOROOT=/opt/go
 #export GOPATH=/usr/local/go
@@ -85,9 +85,6 @@ export GREP_OPTIONS="--color=always"
 
 
 #### Function declarations
-godoc_alias() {
-    godoc "$@" | less
-}
 urldecode_alias() {
     python -c "import urllib, sys; print urllib.unquote(sys.argv[1])" "$@"
 }
@@ -95,51 +92,27 @@ urlencode_alias() {
     python -c "import urllib, sys; print urllib.quote(sys.argv[1])" "$@"
 }
 
-backup_to_hdd_alias() {
-    BACKUPPATH="hjemme:/media/storage2/samba/backup/dropbox/"
-    `backup_to`
-}
-
-backup_to_home_serv_alias() {
-    BACKUPPATH="hjemme:/media/storage2/samba/backup/dropbox/"
-    `backup_to`
-}
-
-backup_to() {
-    DATE=$(date +%y.%m.%d-%H:%M:%S)
-    rsync -va --delete --delete-excluded /media/katnegermis/storage/Dropbox/ $BACKUPPATH/backup_$DATE
-}
-
 todo_today_alias() {
     DATE=$(date +%y.%m.%d)
     vim ~/todo/todo_$DATE
-}
-
-ordnet_alias() {
-    xdg-open "http://ordnet.dk/ddo/ordbog?query="$@
 }
 
 
 #### Aliases
 alias vi=vim
 alias todo="vi ~/todo/todo.txt"
-alias se=/home/katnegermis/coding/python/series_everything/tvshowhelper.py
+alias se=~/coding/python/series_everything/tvshowhelper.py
 alias wn="se $@ --watch-next"
-alias s="apt-cache search"
+alias s="apt search"
+alias i='sudo apt install'
 alias zshrc="vim ~/.zshrc"
 alias o=xdg-open
-alias sshfs_do="sshfs do:/home/katnegermis/downloads /media/katnegermis/server"
-alias backuphdd=backup_to_hdd_alias
-alias backupsrv=backup_to_home_serv_alias
-alias backupdo="rsync -r -u /media/katnegermis/storage/dropbox/ do:/home/katnegermis/backup --progress"
+alias sshfs_sw="sshfs sw:/ /media/katnegermis/sw"
 alias youtube-mp3="youtube-dl --extract-audio --audio-format mp3 --audio-quality 0"
 alias youtube-mp3ffmpeg="youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 --prefer-ffmpeg"
 alias urldecode=urldecode_alias
 alias urlencode=urlencode_alias
-alias godoc=godoc_alias
-alias ordnet=ordnet_alias
 alias pdf=pandocpdf_alias
-alias nots='its -n'
 alias todotoday=todo_today_alias
 alias v=vim
 alias cb='xclip -sel clip'
@@ -150,19 +123,16 @@ alias ll='ls -lh'
 alias la='ls -lAh'
 alias sshpw='ssh -o PreferredAuthentications=password'
 alias scppw='scp -o PreferredAuthentications=password '
-alias ord='/home/katnegermis/coding/python/ordbogen_free/ord.py '
+alias ord='~/coding/python/ordbogen_free/ord.py '
 alias suspend='sudo pm-suspend'
 alias arbtt-stats-today='arbtt-stats --filter "\$date >= $(date +%Y-%m-%d)"'
 alias arbtt-stats-24h='arbtt-stats --filter "\$sampleage <= 24:00"'
 alias ida64='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.5/idaq64.exe'
 alias ida='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.5/idaq.exe'
-alias i='sudo apt-get install'
 alias wifi='sudo nmcli nm wifi '
 alias wificonnect='nmcli dev wifi connect "$1" iface wlan0 '
 alias doirssi='ssh sw -t screen -d -r irssi'
 alias mdsec='egrep -e "^(-------|=======|#{2,6})" -B 1 -A0 --color=never'
-alias mibado='ssh do -t ssh miba'
-alias mibahjemme='ssh hjemme -t ssh miba'
 alias dco=docker-compose
 
 
@@ -182,7 +152,3 @@ precmd() {
 }
 
 stty -ixon
-
-# if [ -f ~/.zsh_completion ]; then
-#     . ~/.zsh_completion
-# fi
