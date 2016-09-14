@@ -44,6 +44,7 @@ let NERDTreeIgnore = ['\.pyc$']
 map <C-k><C-b> :NERDTreeToggle<CR>
 map <C-k><C-n> :TagbarToggle<CR>
 
+
 let g:rehash256 = 1
 set number
 syntax on
@@ -65,6 +66,7 @@ set number
 
 " markdown config
 au BufRead,BufNewFile *.md set filetype=markdown
+au BufNewFile,BufRead *.md noremap <silent> <Leader>b :!sh make.sh<CR><CR>
 
 " python indentation config
 au BufNewFile,BufRead *.py set tabstop=4 | set softtabstop=4 | set shiftwidth=4 | set expandtab | set autoindent | set fileformat=unix
