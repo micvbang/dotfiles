@@ -56,6 +56,8 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 [[ -s /home/katnegermis/.autojump/etc/profile.d/autojump.sh ]] && source /home/katnegermis/.autojump/etc/profile.d/autojump.sh
 
+autoload -U compinit && compinit -u
+
 # Automatically load tmux
 [[ $- != *i* ]] && return
 [[ -z "$TMUX" ]] && exec tmux
@@ -121,7 +123,7 @@ ordnet_alias() {
 #### Aliases
 alias vi=vim
 alias todo="vi ~/todo/todo.txt"
-alias se=/media/katnegermis/storage/dropbox/koding/python/series_everything/tvshowhelper.py
+alias se=/home/katnegermis/coding/python/series_everything/tvshowhelper.py
 alias wn="se $@ --watch-next"
 alias s="apt-cache search"
 alias zshrc="vim ~/.zshrc"
@@ -148,7 +150,7 @@ alias ll='ls -lh'
 alias la='ls -lAh'
 alias sshpw='ssh -o PreferredAuthentications=password'
 alias scppw='scp -o PreferredAuthentications=password '
-alias ord='python /home/katnegermis/koding/python/ordbogen.com/main.py '
+alias ord='/home/katnegermis/coding/python/ordbogen_free/ord.py '
 alias suspend='sudo pm-suspend'
 alias arbtt-stats-today='arbtt-stats --filter "\$date >= $(date +%Y-%m-%d)"'
 alias arbtt-stats-24h='arbtt-stats --filter "\$sampleage <= 24:00"'
@@ -157,16 +159,12 @@ alias ida='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.5/idaq.exe'
 alias i='sudo apt-get install'
 alias wifi='sudo nmcli nm wifi '
 alias wificonnect='nmcli dev wifi connect "$1" iface wlan0 '
-alias doirssi='ssh do -t screen -d -r irssi'
+alias doirssi='ssh sw -t screen -d -r irssi'
 alias mdsec='egrep -e "^(-------|=======|#{2,6})" -B 1 -A0 --color=never'
 alias mibado='ssh do -t ssh miba'
 alias mibahjemme='ssh hjemme -t ssh miba'
 alias dco=docker-compose
 
-
-# Load the secret stuff
-source ~/.zshrc_secret
-#. /usr/share/autojump/autojump.sh
 
 # Set dynamic terminal title in urxvt
 case "$TERM" in
