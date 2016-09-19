@@ -101,6 +101,7 @@ todo_today_alias() {
 #### Aliases
 alias vi=vim
 alias todo="vi ~/todo/todo.txt"
+alias ttodo="vi ~/thesis/dump/notes.md"
 alias se=~/coding/python/series_everything/tvshowhelper.py
 alias wn="se $@ --watch-next"
 alias s="apt search"
@@ -135,15 +136,6 @@ alias doirssi='ssh sw -t screen -d -r irssi'
 alias mdsec='egrep -e "^(-------|=======|#{2,6})" -B 1 -A0 --color=never'
 alias dco=docker-compose
 
-
-# Set dynamic terminal title in urxvt
-case "$TERM" in
- xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]"
-    ;;
- *)
-    ;;
-esac
 
 # Add git-stuff to tmux status bar.
 source ~/dotfiles/.tmux-git/tmux-git.sh
