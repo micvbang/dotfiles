@@ -25,6 +25,8 @@ Plugin 'honza/vim-snippets'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-dispatch'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'zchee/deoplete-go'
 
 call vundle#end()
 
