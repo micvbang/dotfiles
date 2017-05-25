@@ -58,22 +58,20 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 autoload -U compinit && compinit -u
 
-# Automatically load tmux
-[[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && exec tmux
 
 #### Exports
 export koding='~/dropbox/koding/'
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 # Add GOPATH to PATH
-export GOPATH=~/dropbox/koding/go
+export GOPATH=~/coding/go
 export GOBIN=/opt/go/bin
 export GOROOT=/opt/go
 #export GOPATH=/usr/local/go
 export PATH=$PATH:/opt/go/bin
-export SCALA_HOME=/opt/scala-2.11.8/
+export SCALA_HOME=/opt/scala/
 export PATH=$PATH:$SCALA_HOME/bin/
+export PATH=$PATH:/opt/sbt/bin/
 # add cabal dir to path (haskell-thing for pandoc)
 export PATH=$HOME/.cabal/bin:$PATH
 export PATH=$PATH:/opt/genymobile/genymotion
@@ -81,7 +79,6 @@ export PATH=$PATH:/opt/ida
 export LESS='-Ri'
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
-export GREP_OPTIONS="--color=always"
 
 
 #### Function declarations
@@ -97,6 +94,8 @@ todo_today_alias() {
     vim ~/todo/todo_$DATE
 }
 
+dockerip () { docker inspect "$@" | egrep '"IPAddress": "' | egrep -o '([0-9]+.[0-9]+.[0-9]+.[0-9]+)'; }
+dockerrm () { sudo docker stop "$@" && sudo docker rm -v "$@" }
 
 #### Aliases
 alias vi=vim
@@ -108,7 +107,8 @@ alias s="apt search"
 alias i='sudo apt install'
 alias zshrc="vim ~/.zshrc"
 alias o=xdg-open
-alias sshfs_sw="sshfs sw:/ /media/katnegermis/sw"
+alias sshfs_gk="sshfs gk:/ /media/katnegermis/sw"
+alias sshfs_hjemme="sshfs hjemme:/ /media/katnegermis/hjemme"
 alias youtube-mp3="youtube-dl --extract-audio --audio-format mp3 --audio-quality 0"
 alias youtube-mp3ffmpeg="youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 --prefer-ffmpeg"
 alias urldecode=urldecode_alias
@@ -132,9 +132,15 @@ alias ida64='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.5/idaq64.exe'
 alias ida='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.5/idaq.exe'
 alias wifi='sudo nmcli nm wifi '
 alias wificonnect='nmcli dev wifi connect "$1" iface wlan0 '
-alias doirssi='ssh sw -t screen -d -r irssi'
+alias doirssi='ssh gk -t screen -d -r irssi'
 alias mdsec='egrep -e "^(-------|=======|#{2,6})" -B 1 -A0 --color=never'
 alias dco=docker-compose
+alias pgadmin4="python /usr/local/lib/python2.7/dist-packages/pgadmin4/pgAdmin4.py"
+dockerclean() { sudo docker volume ls -qf dangling=true | xargs -r docker volume rm; }
+alias sz=streamzor-cli
+dockerip () { sudo docker inspect "$@" | egrep '"IPAddress": "' | egrep -o '([0-9]+.[0-9]+.[0-9]+.[0-9]+)'; }
+
+alias startgamer="wakeonlan 2c:56:dc:3c:c1:ce"
 
 
 # Add git-stuff to tmux status bar.
@@ -144,3 +150,11 @@ precmd() {
 }
 
 stty -ixon
+export SPARK_HOME=/home/katnegermis/thesis/simba/Simba/engine/
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
+export SPARK_LOCAL_IP=127.0.0.1
+
+# Automatically load tmux
+[[ $- != *i* ]] && return
+[[ -z "$TMUX" ]] && [[ -z "$NOTMUX" ]] && exec tmux
