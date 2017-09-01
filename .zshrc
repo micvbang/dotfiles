@@ -60,18 +60,13 @@ autoload -U compinit && compinit -u
 
 
 #### Exports
-export koding='~/dropbox/koding/'
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper_lazy.sh
+
 # Add GOPATH to PATH
 export GOPATH=~/coding/go
-export GOBIN=/opt/go/bin
-export GOROOT=/opt/go
-#export GOPATH=/usr/local/go
-export PATH=$PATH:/opt/go/bin
-export SCALA_HOME=/opt/scala/
-export PATH=$PATH:$SCALA_HOME/bin/
-export PATH=$PATH:/opt/sbt/bin/
+export PATH=$PATH:/usr/local/go/bin
+
 # add cabal dir to path (haskell-thing for pandoc)
 export PATH=$HOME/.cabal/bin:$PATH
 export PATH=$PATH:/opt/genymobile/genymotion
