@@ -18,6 +18,9 @@
     zip = archive --format=zip -9
     diffc = diff --cached
     ai = add --interactive
+    branch-name = "!git rev-parse --abbrev-ref HEAD"
+    pub = "!git push -u origin $(git branch-name)"
+    unpub = "!git push origin :$(git branch-name)"
 [color]
     branch = auto
     diff = auto
