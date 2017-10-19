@@ -21,7 +21,7 @@ autoload -U compinit && compinit -u
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 
-# Add GOPATH to PATH
+# Add go related to PATH
 export GOPATH=~/coding/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin
@@ -52,9 +52,6 @@ dockerrm () { sudo docker stop "$@" && sudo docker rm -v "$@" }
 #### Aliases
 alias vi=vim
 alias todo="vi ~/todo/todo.txt"
-alias ttodo="vi ~/thesis/dump/notes.md"
-alias se=~/coding/python/series_everything/tvshowhelper.py
-alias wn="se $@ --watch-next"
 alias zshrc="vim ~/.zshrc"
 alias o=xdg-open
 alias youtube-mp3="youtube-dl --extract-audio --audio-format mp3 --audio-quality 0"
@@ -62,10 +59,8 @@ alias youtube-mp3ffmpeg="youtube-dl --extract-audio --audio-format mp3 --audio-q
 alias urldecode=urldecode_alias
 alias urlencode=urlencode_alias
 alias pdf=pandocpdf_alias
-alias todotoday=todo_today_alias
 alias v=vim
 alias cb='xclip -sel clip'
-
 alias lsa='ls -lah'
 alias l='ls'
 alias ll='ls -lh'
@@ -74,15 +69,24 @@ alias sshpw='ssh -o PreferredAuthentications=password'
 alias scppw='scp -o PreferredAuthentications=password '
 alias ord='~/coding/python/ordbogen_free/ord.py '
 alias suspend='sudo pm-suspend'
-alias wifi='sudo nmcli nm wifi '
-alias wificonnect='nmcli dev wifi connect "$1" iface wlan0 '
 alias doirssi='ssh gk -t screen -d -r irssi'
 alias dco=docker-compose
-dockerclean() { sudo docker volume ls -qf dangling=true | xargs -r docker volume rm; }
-alias sz=streamzor-cli
-dockerip () { sudo docker inspect "$@" | egrep '"IPAddress": "' | egrep -o '([0-9]+.[0-9]+.[0-9]+.[0-9]+)'; }
-
 alias startgamer="wakeonlan 2c:56:dc:3c:c1:ce"
+
+# fzf + ag configuration
+if [ -e ~/.fzf ]; then
+  export PATH=$PATH:~/.fzf/bin
+  source ~/.fzf/shell/key-bindings.zsh
+  source ~/.fzf/shell/completion.zsh
+
+  export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_DEFAULT_OPTS='
+  --color fg:242,bg:236,hl:65,fg+:15,bg+:239,hl+:108
+  --color info:108,prompt:109,spinner:108,pointer:168,marker:168
+  '
+fi
 
 
 # Add git-stuff to tmux status bar.
