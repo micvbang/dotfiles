@@ -1,28 +1,24 @@
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
+set rtp+=~/.fzf
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'fatih/vim-go'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+Plugin 'junegunn/fzf.vim'
 Plugin 'Yggdroot/indentLine'
-Plugin 'majutsushi/tagbar'
 Plugin 'fatih/molokai'
 Plugin 'katnegermis/vim-tmux-navigator'
-" Plugin 'Lokaltog/powerline-fonts'
 Plugin 'SirVer/ultisnips'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'ervandew/supertab'
 Plugin 'honza/vim-snippets'
-" Plugin 'vim-scripts/indentpython.vim'
-" Plugin 'nvie/vim-flake8'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'w0rp/ale'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-dispatch'
 Plugin 'Shougo/deoplete.nvim'
@@ -44,9 +40,8 @@ let g:ctrlp_custom_ignore = {
 let NERDTreeIgnore = ['\.pyc$']
 "
 "hotkeys for nerdtree and tlist
-map <C-k><C-b> :NERDTreeToggle<CR>
-map <C-k><C-n> :TagbarToggle<CR>
 
+nmap <c-t> :Files<CR>
 
 let g:rehash256 = 1
 set number
@@ -71,7 +66,8 @@ set number
 
 " markdown config
 au BufRead,BufNewFile *.md set filetype=markdown
-au BufNewFile,BufRead *.md noremap <silent> <Leader>b :!sh make.sh<CR><CR>
+au BufNewFile,BufRead *.md let b:dispatch = 'sh make.sh'
+nnoremap <Leader>b :Dispatch!<CR>
 
 " python indentation config
 au BufNewFile,BufRead *.py set tabstop=4 | set softtabstop=4 | set shiftwidth=4 | set expandtab | set autoindent | set fileformat=unix
@@ -79,7 +75,6 @@ au BufNewFile,BufRead *.py set tabstop=4 | set softtabstop=4 | set shiftwidth=4 
 set hlsearch
 set ttyfast " u got a fast terminal
 set synmaxcol=200
-" set ttyscroll=3
 set lazyredraw " to avoid scrolling problems
 
 setlocal nowrap
