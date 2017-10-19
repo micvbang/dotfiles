@@ -10,18 +10,14 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-## Add autojump
-
-[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
-
 autoload -U compinit && compinit -u
 
 
-#### Exports
+# Exports
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 
-# Add go related to PATH
+## Golang
 export GOPATH=~/coding/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin
@@ -33,7 +29,7 @@ export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 
 
-#### Function declarations
+# Functions
 urldecode_alias() {
     python -c "import urllib, sys; print urllib.unquote(sys.argv[1])" "$@"
 }
@@ -46,10 +42,15 @@ todo_today_alias() {
     vim ~/todo/todo_$DATE
 }
 
-dockerip () { docker inspect "$@" | egrep '"IPAddress": "' | egrep -o '([0-9]+.[0-9]+.[0-9]+.[0-9]+)'; }
-dockerrm () { sudo docker stop "$@" && sudo docker rm -v "$@" }
+dockerip () {
+    docker inspect "$@" | egrep '"IPAddress": "' | egrep -o '([0-9]+.[0-9]+.[0-9]+.[0-9]+)';
+}
 
-#### Aliases
+dockerrm () {
+    sudo docker stop "$@" && sudo docker rm -v "$@"
+}
+
+# Aliases
 alias vi=vim
 alias todo="vi ~/todo/todo.txt"
 alias zshrc="vim ~/.zshrc"
@@ -73,6 +74,9 @@ alias doirssi='ssh gk -t screen -d -r irssi'
 alias dco=docker-compose
 alias startgamer="wakeonlan 2c:56:dc:3c:c1:ce"
 
+## Add autojump
+[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
+
 # fzf + ag configuration
 if [ -e ~/.fzf ]; then
   export PATH=$PATH:~/.fzf/bin
@@ -88,15 +92,8 @@ if [ -e ~/.fzf ]; then
   '
 fi
 
-
-# Add git-stuff to tmux status bar.
-source ~/dotfiles/.tmux-git/tmux-git.sh
-precmd() {
-    update_tmux
-}
-
 stty -ixon
-#
+
 # Automatically load tmux
 [[ $- != *i* ]] && return
 [[ -z "$TMUX" ]] && [[ -z "$NOTMUX" ]] && exec tmux
