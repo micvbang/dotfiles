@@ -1,0 +1,14 @@
+{
+  "window.zoomLevel": 0,
+  // "go.gopath": "/home/katnegermis/go",
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": [
+    "--ignore=E501"
+  ],
+  "sublimeTextKeymap.promptV3Features": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.snippetSuggestions": "top",
+  "editor.formatOnPaste": true,
+  "explorer.confirmDelete": false,
+  "editor.formatOnSave": true
+}
