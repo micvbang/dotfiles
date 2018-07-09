@@ -1,18 +1,28 @@
 {
   "window.zoomLevel": 0,
   "go.gopath": "/home/katnegermis/coding/go",
-  "python.linting.flake8Enabled": true,
-  "python.linting.flake8Args": [
-    "--ignore=E501"
-  ],
   "sublimeTextKeymap.promptV3Features": true,
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.snippetSuggestions": "top",
   "editor.formatOnPaste": true,
   "explorer.confirmDelete": false,
   "editor.formatOnSave": true,
-  "python.pythonPath": "/usr/bin/python3",
   "python.formatting.autopep8Args": [
     "--max-line-length=200"
-  ]
+  ],
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": [
+    "--ignore=E501"
+  ],
+  "python.pythonPath": "/usr/bin/python3",
+  "editor.wordWrapColumn": 150,
+  "vim.textwidth": 150,
+  "prettier.printWidth": 150,
+  "editor.formatOnSave": true,
+  "editor.minimap.showSlider": "always",
+  "files.exclude": {
+    "**/*.pyc": true,
+    "**/__pycache__": true,
+    "**/.vscode": true,
+  }
 }
