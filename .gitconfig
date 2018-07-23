@@ -10,6 +10,8 @@
     cob = checkout -b
     ca = commit -a
     c = commit
+    ri = rebase --interactive
+    rc = rebase --continue
     b = branch
     ba = branch -a
     f = fetch
