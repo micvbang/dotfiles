@@ -1,5 +1,6 @@
 {
   "window.zoomLevel": 0,
+  "files.trimTrailingWhitespace": false,
   "go.gopath": "/home/katnegermis/coding/go",
   "sublimeTextKeymap.promptV3Features": true,
   "editor.multiCursorModifier": "ctrlCmd",
