@@ -36,3 +36,5 @@
 	default = simple
 [filter "tabspace"]
 	clean = expand --tabs=4 --initial
+[url "[git@git.haps.pw:8007]:"]
+	insteadOf = http://git.haps.pw/
