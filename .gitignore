@@ -28,3 +28,5 @@ xmonad.o
 xmonad-x86_64-linux
 .pytest_cache
 .vscode
+*.zip
+*.orig
