@@ -18,9 +18,10 @@ export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 
 ## Golang
-export GOPATH=~/coding/go
+export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin
+export GO111MODULE=on
 
 # add cabal dir to path (haskell-thing for pandoc)
 export PATH=$HOME/.cabal/bin:$PATH
@@ -73,6 +74,8 @@ alias suspend='sudo pm-suspend'
 alias doirssi='ssh gk -t screen -d -r irssi'
 alias dco=docker-compose
 alias startgamer="wakeonlan 2c:56:dc:3c:c1:ce"
+alias mkvirtualenv3="mkvirtualenv --python=/usr/bin/python3"
+alias mkvirtualenv37="mkvirtualenv --python=/usr/local/bin/python3.7"
 
 ## Add autojump
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
