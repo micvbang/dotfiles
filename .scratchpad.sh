@@ -13,5 +13,5 @@ H=$(( ($SCREEN_HEIGHT / 100 * $HEIGHT_PCT)  / 22))
 X=$(( $SCREEN_WIDTH / 100 * (100 - $WIDTH_PCT) ))
 Y=$(( $SCREEN_HEIGHT / 100 * (100 - $HEIGHT_PCT) ))
 
-gnome-terminal --geometry $(printf "%sx%s+%s+%s" "$W" "$H" "$X" "$Y")  -x sh -c "tmux attach -dt scratchpad || tmux new -s scratchpad"
+gnome-terminal --geometry $(printf "%sx%s+%s+%s" "$W" "$H" "$X" "$Y")  -- sh -c "tmux attach -dt scratchpad || tmux new -s scratchpad"
 # wmctrl -r :ACTIVE: -b remove,maximized_vert,maximized_horz && wmctrl -r :ACTIVE: -e 0,$X,$Y,$W,$H
