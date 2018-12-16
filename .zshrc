@@ -52,6 +52,7 @@ dockerrm () {
 }
 
 # Aliases
+alias g=git
 alias vi=vim
 alias todo="vi ~/todo/todo.txt"
 alias zshrc="vim ~/.zshrc"
@@ -102,3 +103,5 @@ stty -ixon
 # Automatically load tmux
 [[ $- != *i* ]] && return
 [[ -z "$TMUX" ]] && [[ -z "$NOTMUX" ]] && exec tmux
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
