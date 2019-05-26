@@ -28,6 +28,7 @@ export PATH=$HOME/.cabal/bin:$PATH
 export LESS='-Ri'
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
+export LC_ALL=en_US.UTF-8
 
 
 # Functions
