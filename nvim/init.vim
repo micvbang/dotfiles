@@ -1,19 +1,19 @@
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim/
+set rtp+=~/.config/nvim/bundle/Vundle.vim/
 set rtp+=~/.fzf
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'fatih/vim-go'
+" Plugin 'fatih/vim-go'
 Plugin 'junegunn/fzf.vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'fatih/molokai'
 Plugin 'katnegermis/vim-tmux-navigator'
-Plugin 'SirVer/ultisnips'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
+" Plugin 'SirVer/ultisnips'
+" Plugin 'xolox/vim-misc'
+" Plugin 'xolox/vim-easytags'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'ervandew/supertab'
 Plugin 'honza/vim-snippets'
@@ -21,8 +21,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'w0rp/ale'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-dispatch'
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'zchee/deoplete-go'
+" Plugin 'Shougo/deoplete.nvim'
+" Plugin 'zchee/deoplete-go'
 
 call vundle#end()
 
@@ -125,6 +125,7 @@ let python_highlight_all=1
 " vim-airline status line stuff
 " let g:airline_powerline_fonts = 1
 set laststatus=2
+set conceallevel=0
 
 "vim-tmux window panning
 if $TMUX != ''
