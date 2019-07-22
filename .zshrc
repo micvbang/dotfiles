@@ -52,6 +52,10 @@ dockerrm () {
     sudo docker stop "$@" && sudo docker rm -v "$@"
 }
 
+mkvirtualenv3 () {
+    mkvirtualenv --python=/usr/bin/python3 "$1" && echo "$1" > .venv
+}
+
 # Aliases
 alias g=git
 alias vi=vim
@@ -76,8 +80,6 @@ alias suspend='sudo pm-suspend'
 alias doirssi='ssh gk -t screen -d -r irssi'
 alias dco=docker-compose
 alias startgamer="wakeonlan 2c:56:dc:3c:c1:ce"
-alias mkvirtualenv3="mkvirtualenv --python=/usr/bin/python3"
-alias mkvirtualenv37="mkvirtualenv --python=/usr/local/bin/python3.7"
 
 ## Add autojump
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
