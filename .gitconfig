@@ -1,5 +1,5 @@
 [user]
-	email = michael@katnegermis.dk
+	email = mic@vbang.dk
 	name = Michael Bang
 [alias]
     a = add -A
@@ -38,3 +38,5 @@
 	clean = expand --tabs=4 --initial
 [url "[git@git.haps.pw:8007]:"]
 	insteadOf = http://git.haps.pw/
+[url "git@gitlab.com:"]
+	insteadOf = https://gitlab.com/
