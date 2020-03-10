@@ -22,6 +22,7 @@ export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin
 export GO111MODULE=on
+export GOPRIVATE="gitlab.com/micvbang/*"
 
 # add cabal dir to path (haskell-thing for pandoc)
 export PATH=$HOME/.cabal/bin:$PATH
@@ -30,6 +31,7 @@ export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 export LC_ALL=en_US.UTF-8
 
+export PATH=$PATH:/opt/aws-vault
 
 # Functions
 urldecode_alias() {
@@ -53,7 +55,7 @@ dockerrm () {
 }
 
 mkvirtualenv3 () {
-    mkvirtualenv --python=/usr/bin/python3 "$1" && echo "$1" > .venv
+    mkvirtualenv --python=/usr/bin/python3.7 --system-site-packages "$1" && echo "$1" > .venv
 }
 
 # Aliases
