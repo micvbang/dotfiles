@@ -1,8 +1,6 @@
 {
   "window.zoomLevel": -1,
   "files.trimTrailingWhitespace": false,
-  // "go.gopath": "/home/katnegermis/go",
-  "sublimeTextKeymap.promptV3Features": true,
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.snippetSuggestions": "top",
   "editor.formatOnPaste": true,
@@ -23,8 +21,61 @@
   "files.exclude": {
     "**/*.pyc": true,
     "**/__pycache__": true,
-    "**/.vscode": true,
+    "**/.vscode": true
   },
+  "explorer.confirmDragAndDrop": false,
+  "go.useLanguageServer": true,
+  "go.alternateTools": {
+    "go-langserver": "gopls"
+  },
+  "go.languageServerExperimentalFeatures": {
+    "format": false,
+    "autoComplete": true,
+    "goToDefinition": true,
+    "hover": true,
+    "signatureHelp": true,
+    "goToTypeDefinition": true,
+    "rename": true,
+    "findReferences": true,
+    "diagnostics": false // for build and vet errors as you type
+  },
+  "go.buildOnSave": "package",
+  "go.vetOnSave": "package",
   "editor.formatOnSave": true,
-  "explorer.confirmDragAndDrop": false
+  "go.testFlags": [
+    "-count=1"
+  ],
+  "vim.useCtrlKeys": false,
+  "go.testTimeout": "30s",
+  "[go]": {
+    "editor.snippetSuggestions": "inline",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+    "editor.codeActionsOnSaveTimeout": 15000,
+    "editor.defaultFormatter": "ms-vscode.Go"
+  },
+  "gopls": {
+    "usePlaceholders": false, // add parameter placeholders when completing a function
+    "wantCompletionDocumentation": true, // for documentation in completion items
+    "env": {
+      "GOPRIVATE": "git.haps.pw/*,gitlab.com/micvbang/*"
+    },
+  },
+  "files.eol": "\n",
+  "workbench.sideBar.location": "right",
+  "terraform.indexing": {
+    "enabled": false,
+    "liveIndexing": false,
+    "delay": 500,
+    "exclude": [
+      ".terraform/**/*",
+      "**/.terraform/**/*"
+    ]
+  },
+  "terraform.languageServer": {
+    "enabled": true,
+    "args": []
+  } // formatting only supports LF line endings
 }
