@@ -16,13 +16,18 @@
     ba = branch -a
     f = fetch
     pu = push
-    fb = !git checkout -b $1 master
+    fb = "!git checkout development && git cob $1"
     zip = archive --format=zip -9
     diffc = diff --cached
     ai = add --interactive
     branch-name = "!git rev-parse --abbrev-ref HEAD"
     pub = "!git push -u origin $(git branch-name)"
+    pullo = "!git fetch && git reset --hard origin/$(git branch-name)"
+    pubt = "!git push --tags -u origin $(git branch-name)"
     unpub = "!git push origin :$(git branch-name)"
+    gotag = !git tag -m "$1" -a
+    t = tag
+    td = tag -d
 [color]
     branch = auto
     diff = auto
