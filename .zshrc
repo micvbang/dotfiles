@@ -3,7 +3,7 @@ ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="katnegermis"
 
-plugins=(git command-not-found pip screen virtualenvwrapper virtualenv virtualenv-prompt)
+plugins=(git command-not-found pip screen virtualenvwrapper virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -18,11 +18,12 @@ export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 
 ## Golang
-export GOPATH=~/go
+export GOPATH=~/projects/
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:~/go/bin
 export PATH=$PATH:/usr/local/go/bin
 export GO111MODULE=on
-export GOPRIVATE="gitlab.com/micvbang/*"
+export GOPRIVATE="git.haps.pw/*,gitlab.com/micvbang/"
 
 # add cabal dir to path (haskell-thing for pandoc)
 export PATH=$HOME/.cabal/bin:$PATH
@@ -31,7 +32,9 @@ export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 export LC_ALL=en_US.UTF-8
 
-export PATH=$PATH:/opt/aws-vault
+# aws-vault
+export PATH=$PATH:/opt/aws-vault/
+
 
 # Functions
 urldecode_alias() {
@@ -110,3 +113,4 @@ stty -ixon
 [[ -z "$TMUX" ]] && [[ -z "$NOTMUX" ]] && exec tmux
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(direnv hook zsh)"
