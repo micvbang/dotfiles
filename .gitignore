@@ -32,3 +32,4 @@ xmonad-x86_64-linux
 *.orig
 *.dem
 .envrc
+plan
