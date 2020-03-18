@@ -28,6 +28,7 @@
     gotag = !git tag -m "$1" -a
     t = tag
     td = tag -d
+    pr = !gitman pr $(git remote get-url origin) $(git branch-name)
 [color]
     branch = auto
     diff = auto
