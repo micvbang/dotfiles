@@ -1,9 +1,9 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
-ZSH_THEME="katnegermis"
+ZSH_THEME="micvbang"
 
-plugins=(git command-not-found pip screen virtualenvwrapper virtualenv)
+plugins=(git command-not-found pip screen virtualenvwrapper virtualenv terraform)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -34,6 +34,9 @@ export LC_ALL=en_US.UTF-8
 
 # aws-vault
 export PATH=$PATH:/opt/aws-vault/
+
+# terraform
+export PATH=$PATH:/opt/terraform/
 
 
 # Functions
