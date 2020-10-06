@@ -29,7 +29,7 @@ call vundle#end()
 
 set t_Co=256
 set encoding=utf-8
-set columns=80
+" set columns=80
 "remove EOL white spaces.
 autocmd BufWritePre * :%s/\s\+$//e
 "set color of indent lines
@@ -74,7 +74,7 @@ au BufNewFile,BufRead *.py set tabstop=4 | set softtabstop=4 | set shiftwidth=4 
 set hlsearch
 set ttyfast " u got a fast terminal
 set synmaxcol=200
-set ttyscroll=3
+"set ttyscroll=3
 set lazyredraw " to avoid scrolling problems
 
 setlocal nowrap
@@ -88,26 +88,6 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 
 " easytags config
 let g:easytags_async = 1
-
-"vim-go bindings
-let g:go_fmt_command = "goimports"
-let g:go_auto_type_info = 0
-let g:go_fmt_autosave = 1
-let g:go_dispatch_enabled = 1
-let g:go_doc_command = "godoc"
-
-au FileType go nmap <Leader>i <Plug>(go-info)
-au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
-au FileType go nmap <Leader>e <Plug>(go-rename)
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 
 "ultisnips bindings
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -128,7 +108,7 @@ set laststatus=2
 if $TMUX != ''
     " integrate movement between tmux/vim panes/windows
 
-    fun! TmuxMove(direction)
+  fun! TmuxMove(direction)
     " Check if we are currently focusing on a edge window.
     " To achieve that,  move to/from the requested window and
     " see if the window number changed
@@ -150,16 +130,19 @@ if $TMUX != ''
     else
       exe 'wincmd ' . a:direction
     end
-    endfun
-    nnoremap <silent> <c-w>j :silent call TmuxMove('j')<cr>
-    nnoremap <silent> <c-w>k :silent call TmuxMove('k')<cr>
-    nnoremap <silent> <c-w>h :silent call TmuxMove('h')<cr>
-    nnoremap <silent> <c-w>l :silent call TmuxMove('l')<cr>
-    nnoremap <silent> <c-w><down> :silent call TmuxMove('j')<cr>
-    nnoremap <silent> <c-w><up> :silent call TmuxMove('k')<cr>
-    nnoremap <silent> <c-w><left> :silent call TmuxMove('h')<cr>
-    nnoremap <silent> <c-w><right> :silent call TmuxMove('l')<cr>
+  endfun
 endif
+
+nnoremap <M-h>h :silent call TmuxMove('h')<cr>
+
+nnoremap <silent> <m-c-w>j :silent call TmuxMove('j')<cr>
+nnoremap <silent> <m-c-w>k :silent call TmuxMove('k')<cr>
+nnoremap <silent> <m-c-w>h :silent call TmuxMove('h')<cr>
+nnoremap <silent> <m-c-w>l :silent call TmuxMove('l')<cr>
+nnoremap <silent> <m-c-w><down> :silent call TmuxMove('j')<cr>
+nnoremap <silent> <m-c-w><up> :silent call TmuxMove('k')<cr>
+nnoremap <silent> <m-c-w><left> :silent call TmuxMove('h')<cr>
+nnoremap <silent> <m-c-w><right> :silent call TmuxMove('l')<cr>
 
 "Add wrapping bindings, sublime-like movements.
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
