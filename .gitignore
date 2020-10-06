@@ -33,3 +33,4 @@ xmonad-x86_64-linux
 *.dem
 .envrc
 plan
+.terraform/
