@@ -3,7 +3,7 @@ ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="micvbang"
 
-plugins=(git command-not-found pip screen virtualenvwrapper virtualenv terraform)
+plugins=(git pip screen virtualenvwrapper virtualenv terraform aws-vault)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -13,9 +13,11 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 autoload -U compinit && compinit -u
 
 
-# Exports
+# Python virtualenv
+export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper_lazy.sh
+
 
 ## Golang
 export GOPATH=~/projects/
@@ -23,7 +25,7 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/go/bin
 export PATH=$PATH:/usr/local/go/bin
 export GO111MODULE=on
-export GOPRIVATE="git.haps.pw/*,gitlab.com/micvbang/"
+export GOPRIVATE="git.haps.pw/*,gitlab.com/micvbang/*"
 
 # add cabal dir to path (haskell-thing for pandoc)
 export PATH=$HOME/.cabal/bin:$PATH
@@ -61,7 +63,7 @@ dockerrm () {
 }
 
 mkvirtualenv3 () {
-    mkvirtualenv --python=/usr/bin/python3.7 --system-site-packages "$1" && echo "$1" > .venv
+    mkvirtualenv --python=/usr/bin/python3.8 --system-site-packages "$1" && echo "$1" > .venv
 }
 
 # Aliases
@@ -87,7 +89,6 @@ alias ord='~/coding/python/ordbogen_free/ord.py '
 alias suspend='sudo pm-suspend'
 alias doirssi='ssh gk -t screen -d -r irssi'
 alias dco=docker-compose
-alias startgamer="wakeonlan 2c:56:dc:3c:c1:ce"
 
 ## Add autojump
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
