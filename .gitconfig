@@ -12,6 +12,7 @@
     c = commit
     ri = rebase --interactive
     rc = rebase --continue
+    rs = rebase --skip
     b = branch
     ba = branch -a
     f = fetch
@@ -22,13 +23,15 @@
     ai = add --interactive
     branch-name = "!git rev-parse --abbrev-ref HEAD"
     pub = "!git push -u origin $(git branch-name)"
+    pubto = "!git push -u $@ $(git branch-name) #"
     pullo = "!git fetch && git reset --hard origin/$(git branch-name)"
     pubt = "!git push --tags -u origin $(git branch-name)"
-    unpub = "!git push origin :$(git branch-name)"
+    unpub = "!git push origin $(git branch-name)"
     gotag = !git tag -m "$1" -a
     t = tag
     td = tag -d
     pr = !gitman pr $(git remote get-url origin) $(git branch-name)
+    sup = submodule update
 [color]
     branch = auto
     diff = auto
