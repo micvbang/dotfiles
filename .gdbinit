@@ -1,9 +1,10 @@
-source ~/tools/peda/peda.py
+source ~/.peda/peda.py
 
 set disassembly-flavor intel
 set disable-randomization off
 set pagination off
 set follow-fork-mode child
+set print pretty on
 
 # History
 set history filename ~/.gdbhistory
