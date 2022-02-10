@@ -1,5 +1,4 @@
 {
-  "window.zoomLevel": -1,
   "files.trimTrailingWhitespace": false,
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.snippetSuggestions": "top",
@@ -37,7 +36,6 @@
     "goToTypeDefinition": true,
     "rename": true,
     "findReferences": true,
-    "diagnostics": false // for build and vet errors as you type
   },
   "go.buildOnSave": "package",
   "go.vetOnSave": "package",
@@ -54,17 +52,16 @@
       "source.organizeImports": true
     },
     "editor.codeActionsOnSaveTimeout": 15000,
-    "editor.defaultFormatter": "ms-vscode.Go"
+    "editor.defaultFormatter": "golang.go"
   },
   "gopls": {
     "usePlaceholders": false, // add parameter placeholders when completing a function
-    "wantCompletionDocumentation": true, // for documentation in completion items
+    "completionDocumentation": true, // for documentation in completion items
     "env": {
       "GOPRIVATE": "git.haps.pw/*,gitlab.com/micvbang/*"
     },
   },
   "files.eol": "\n",
-  "workbench.sideBar.location": "right",
   "terraform.indexing": {
     "enabled": false,
     "liveIndexing": false,
@@ -77,5 +74,15 @@
   "terraform.languageServer": {
     "enabled": true,
     "args": []
-  } // formatting only supports LF line endings
+  },
+  "window.zoomLevel": -1,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "go.toolsManagement.autoUpdate": true,
+  "editor.largeFileOptimizations": false // formatting only supports LF line endings
 }
