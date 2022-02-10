@@ -1,23 +1,126 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+# Personal Zsh configuration file. It is strongly recommended to keep all
+# shell customization and configuration (including exported environment
+# variables such as PATH) in this file or in files sourced from it.
+#
+# Documentation: https://github.com/romkatv/zsh4humans/blob/v5/README.md.
 
-ZSH_THEME="micvbang"
+# Periodic auto-update on Zsh startup: 'ask' or 'no'.
+# You can manually run `z4h update` to update everything.
+zstyle ':z4h:' auto-update      'no'
+# Ask whether to auto-update this often; has no effect if auto-update is 'no'.
+zstyle ':z4h:' auto-update-days '28'
 
-plugins=(git pip screen virtualenvwrapper virtualenv terraform aws-vault)
+# Start tmux if not already in tmux.
+zstyle ':z4h:' start-tmux       command tmux -u new -A -D -t z4h
 
-source $ZSH/oh-my-zsh.sh
+# Move prompt to the bottom when zsh starts and on Ctrl+L.
+zstyle ':z4h:' prompt-at-bottom 'yes'
 
-# User configuration
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+# Keyboard type: 'mac' or 'pc'.
+zstyle ':z4h:bindkey' keyboard  'pc'
 
-autoload -U compinit && compinit -u
+# Mark up shell's output with semantic information.
+zstyle ':z4h:' term-shell-integration 'yes'
 
+# Right-arrow key accepts one character ('partial-accept') from
+# command autosuggestions or the whole thing ('accept')?
+#zstyle ':z4h:autosuggestions' forward-char 'accept'
+
+# Recursively traverse directories when TAB-completing files.
+zstyle ':z4h:fzf-complete' recurse-dirs 'no'
+
+# Enable direnv to automatically source .envrc files.
+zstyle ':z4h:direnv'         enable 'yes'
+# Show "loading" and "unloading" notifications from direnv.
+zstyle ':z4h:direnv:success' notify 'yes'
+
+# Enable ('yes') or disable ('no') automatic teleportation of z4h over
+# SSH when connecting to these hosts.
+zstyle ':z4h:ssh:example-hostname1'   enable 'yes'
+zstyle ':z4h:ssh:*.example-hostname2' enable 'no'
+# The default value if none of the overrides above match the hostname.
+zstyle ':z4h:ssh:*'                   enable 'no'
+
+# Send these files over to the remote host when connecting over SSH to the
+# enabled hosts.
+#zstyle ':z4h:ssh:*' send-extra-files '~/.nanorc' '~/.env.zsh'
+
+# Clone additional Git repositories from GitHub.
+#
+# This doesn't do anything apart from cloning the repository and keeping it
+# up-to-date. Cloned files can be used after `z4h init`. This is just an
+# example. If you don't plan to use Oh My Zsh, delete this line.
+z4h install ohmyzsh/ohmyzsh || return
+
+# Install or update core components (fzf, zsh-autosuggestions, etc.) and
+# initialize Zsh. After this point console I/O is unavailable until Zsh
+# is fully initialized. Everything that requires user interaction or can
+# perform network I/O must be done above. Everything else is best done below.
+z4h init || return
+
+# Extend PATH.
+path=(~/bin $path)
+
+# Export environment variables.
+export GPG_TTY=$TTY
+
+# Source additional local files if they exist.
+z4h source ~/.env.zsh
+
+# Use additional Git repositories pulled in with `z4h install`.
+#
+# This is just an example that you should delete. It does nothing useful.
+#z4h source ohmyzsh/ohmyzsh/lib/diagnostics.zsh  # source an individual file
+#z4h load   ohmyzsh/ohmyzsh/plugins/emoji-clock  # load a plugin
+
+# Define key bindings.
+z4h bindkey z4h-backward-kill-word  Ctrl+Backspace     Ctrl+H
+z4h bindkey z4h-backward-kill-zword Ctrl+Alt+Backspace
+
+z4h bindkey undo Ctrl+/ Shift+Tab # undo the last command line change
+z4h bindkey redo Alt+/            # redo the last undone command line change
+
+z4h bindkey z4h-cd-back    Alt+Left   # cd into the previous directory
+z4h bindkey z4h-cd-forward Alt+Right  # cd into the next directory
+z4h bindkey z4h-cd-up      Alt+Up     # cd into the parent directory
+z4h bindkey z4h-cd-down    Alt+Down   # cd into a child directory
+
+# Autoload functions.
+autoload -Uz zmv
+
+# Define functions and completions.
+function md() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
+compdef _directories md
+
+# Define named directories: ~w <=> Windows home directory on WSL.
+[[ -z $z4h_win_home ]] || hash -d w=$z4h_win_home
+
+# Define aliases.
+alias tree='tree -a -I .git'
+
+# Add flags to existing aliases.
+alias ls="${aliases[ls]:-ls} -A"
+
+# Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
+setopt glob_dots     # no special treatment for file names with a leading dot
+setopt no_auto_menu  # require an extra TAB press to open the completion menu
+
+#################
+# Personal config
+#################
+zstyle ':z4h:zsh-autosuggestions' channel 'none'
+
+alias vi=nvim
+alias vim=nvim
+alias g=git
+alias o=xdg-open
+alias cb='xclip -sel clip'
+alias dco=docker-compose
 
 # Python virtualenv
 export VIRTUALENVWRAPPER_PYTHON=$(which python3)
-export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-source /usr/local/bin/virtualenvwrapper_lazy.sh
-
+export VIRTUALENVWRAPPER_SCRIPT=~/.local/bin/virtualenvwrapper.sh
+source ~/.local/bin/virtualenvwrapper_lazy.sh
 
 ## Golang
 export GOPATH=~/projects/
@@ -27,13 +130,6 @@ export PATH=$PATH:/usr/local/go/bin
 export GO111MODULE=on
 export GOPRIVATE="git.haps.pw/*,gitlab.com/micvbang/*"
 
-# add cabal dir to path (haskell-thing for pandoc)
-export PATH=$HOME/.cabal/bin:$PATH
-export LESS='-Ri'
-export EDITOR=/usr/bin/vim
-export VISUAL=/usr/bin/vim
-export LC_ALL=en_US.UTF-8
-
 # aws-vault
 export PATH=$PATH:/opt/aws-vault/
 
@@ -41,80 +137,7 @@ export PATH=$PATH:/opt/aws-vault/
 export PATH=$PATH:/opt/terraform/
 
 
-# Functions
-urldecode_alias() {
-    python -c "import urllib, sys; print urllib.unquote(sys.argv[1])" "$@"
-}
-urlencode_alias() {
-    python -c "import urllib, sys; print urllib.quote(sys.argv[1])" "$@"
-}
-
-todo_today_alias() {
-    DATE=$(date +%y.%m.%d)
-    vim ~/todo/todo_$DATE
-}
-
-dockerip () {
-    docker inspect "$@" | egrep '"IPAddress": "' | egrep -o '([0-9]+.[0-9]+.[0-9]+.[0-9]+)';
-}
-
-dockerrm () {
-    sudo docker stop "$@" && sudo docker rm -v "$@"
-}
-
 mkvirtualenv3 () {
     mkvirtualenv --python=/usr/bin/python3.8 --system-site-packages "$1" && echo "$1" > .venv
 }
 
-# Aliases
-alias g=git
-alias vi=vim
-alias todo="vi ~/todo/todo.txt"
-alias zshrc="vim ~/.zshrc"
-alias o=xdg-open
-alias youtube-mp3="youtube-dl --extract-audio --audio-format mp3 --audio-quality 0"
-alias youtube-mp3ffmpeg="youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 --prefer-ffmpeg"
-alias urldecode=urldecode_alias
-alias urlencode=urlencode_alias
-alias pdf=pandocpdf_alias
-alias v=vim
-alias cb='xclip -sel clip'
-alias lsa='ls -lah'
-alias l='ls'
-alias ll='ls -lh'
-alias la='ls -lAh'
-alias sshpw='ssh -o PreferredAuthentications=password'
-alias scppw='scp -o PreferredAuthentications=password '
-alias ord='~/coding/python/ordbogen_free/ord.py '
-alias suspend='sudo pm-suspend'
-alias doirssi='ssh gk -t screen -d -r irssi'
-alias dco=docker-compose
-
-## Add autojump
-[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
-
-# fzf + ag configuration
-if [ -e ~/.fzf ]; then
-  export PATH=$PATH:~/.fzf/bin
-  source ~/.fzf/shell/key-bindings.zsh
-  source ~/.fzf/shell/completion.zsh
-
-  export FZF_DEFAULT_COMMAND='bfs -L -nohidden 2>&/dev/null'
-  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-  export FZF_CTRL_T_VI_COMMAND="vi $FZF_DEFAULT_COMMAND"
-  export FZF_ALT_C_COMMAND="bfs -type d -nohidden -L"
-  export FZF_ALT_C_HOME_COMMAND="bfs -type d -nohidden -L ~/"
-  export FZF_DEFAULT_OPTS='
-  --color fg:242,bg:236,hl:65,fg+:15,bg+:239,hl+:108
-  --color info:108,prompt:109,spinner:108,pointer:168,marker:168
-  '
-fi
-
-stty -ixon
-
-# Automatically load tmux
-[[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && [[ -z "$NOTMUX" ]] && exec tmux
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-eval "$(direnv hook zsh)"
