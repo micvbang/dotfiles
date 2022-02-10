@@ -34,3 +34,4 @@ xmonad-x86_64-linux
 .envrc
 plan
 .terraform/
+*.terraform.lock.hcl
