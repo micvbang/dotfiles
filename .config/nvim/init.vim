@@ -104,6 +104,8 @@ let python_highlight_all=1
 " let g:airline_powerline_fonts = 1
 set laststatus=2
 
+set conceallevel=0
+
 "vim-tmux window panning
 if $TMUX != ''
     " integrate movement between tmux/vim panes/windows
