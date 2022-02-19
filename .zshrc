@@ -52,6 +52,8 @@ zstyle ':z4h:ssh:*'                   enable 'no'
 # example. If you don't plan to use Oh My Zsh, delete this line.
 z4h install ohmyzsh/ohmyzsh || return
 
+zstyle ':z4h:zsh-autosuggestions' channel 'none'
+
 # Install or update core components (fzf, zsh-autosuggestions, etc.) and
 # initialize Zsh. After this point console I/O is unavailable until Zsh
 # is fully initialized. Everything that requires user interaction or can
@@ -108,7 +110,6 @@ setopt no_auto_menu  # require an extra TAB press to open the completion menu
 #################
 # Personal config
 #################
-zstyle ':z4h:zsh-autosuggestions' channel 'none'
 
 alias vi=nvim
 alias vim=nvim
@@ -123,9 +124,8 @@ export VIRTUALENVWRAPPER_SCRIPT=~/.local/bin/virtualenvwrapper.sh
 source ~/.local/bin/virtualenvwrapper_lazy.sh
 
 ## Golang
-export GOPATH=~/projects/
+export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:~/go/bin
 export PATH=$PATH:/usr/local/go/bin
 export GO111MODULE=on
 export GOPRIVATE="git.haps.pw/*,gitlab.com/micvbang/*"
