@@ -1,2 +1,5 @@
 bind main F !?<git checkout %(commit)
 set wrap-lines = yes
+set main-view-id = yes
+set main-view-author = abbreviated
+set main-view-date = relative
