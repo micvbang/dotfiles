@@ -3,15 +3,16 @@
 	name = Michael Bang
 [alias]
     a = add -A
+    ai = add --interactive
     s = status -s
     cm = commit -m
-    cam = commit -am
     co = checkout
     cob = checkout -b
-    ca = commit -a
+    ca = commit --amend
     c = commit
     ri = rebase --interactive
     rc = rebase --continue
+    ra = rebase --abort
     rs = rebase --skip
     b = branch
     ba = branch -a
@@ -20,7 +21,6 @@
     fb = "!git checkout development && git cob $1"
     zip = archive --format=zip -9
     diffc = diff --cached
-    ai = add --interactive
     branch-name = "!git rev-parse --abbrev-ref HEAD"
     pub = "!git push -u origin $(git branch-name)"
     pubto = "!git push -u $@ $(git branch-name) #"
@@ -51,3 +51,5 @@
 	insteadOf = http://git.haps.pw/
 [url "git@gitlab.com:"]
 	insteadOf = https://gitlab.com/
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
