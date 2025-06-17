@@ -35,3 +35,4 @@ xmonad-x86_64-linux
 plan
 .terraform/
 *.terraform.lock.hcl
+mise.local.toml
