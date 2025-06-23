@@ -7,14 +7,17 @@
 name = "Michael Bang"
 email = "mic@vbang.dk"
 
-[alias]
+[aliases]
 l = ["log"]
 s = ["status"]
 e = ["edit"]
+n = ["new"]
 fetch = ["git", "fetch"]
 push = ["git", "push"]
+pub = ["git", "push", "-r", "@", "--allow-new"]
+nt = ["new", "-r", "trunk()", "-m", "WIP"]
 
-retrunk = ["rebase", "-d", "trunk()"]
+retrunk = ["rebase", "-r", "@", "-d", "trunk()"]
 
 # Get all open stacks of work
 open = ["log", "-r", "open()"]
@@ -47,6 +50,7 @@ log = 'stack(mine() | @) | trunk() | @'
 [ui]
 editor = "vim"
 default-command = "log"
-diff.format = "git"
 pager = { command = ["less", "-FRX"], env = { LESSCHARSET = "utf-8" } }
+diff-formatter = ":git"
+diff-editor = ":builtin"
 
