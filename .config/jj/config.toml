@@ -15,7 +15,23 @@ n = ["new"]
 fetch = ["git", "fetch"]
 push = ["git", "push"]
 pub = ["git", "push", "-r", "@", "--allow-new"]
+
+# new trunk
 nt = ["new", "-r", "trunk()", "-m", "WIP"]
+
+# new find
+nf = ["util", "exec", "--", "bash", "-c", """\
+jj new -r "$(jj bookmark list | tr ':' ' ' | cut -d' ' -f1 | fzf)"
+"""]
+
+# new find all
+nfa = ["util", "exec", "--", "bash", "-c", """\
+jj new -r "$(jj bookmark list --all | tr ':' ' ' | cut -d' ' -f1 | fzf)"
+"""]
+
+tig = ["util", "exec", "--", "bash", "-c", """\
+tig $(jj show -r "$0" | grep "Commit ID:" | cut -d' ' -f3)
+"""]
 
 retrunk = ["rebase", "-r", "@", "-d", "trunk()"]
 
