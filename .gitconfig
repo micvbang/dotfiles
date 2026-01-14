@@ -30,6 +30,7 @@
     gotag = !git tag -m "$1" -a
     wipr = for-each-ref --sort='committerdate:iso8601' --format=' %(color:yellow)%(committerdate:relative)%09%(color:white)%(refname:short)' refs/remotes/origin
     wip = for-each-ref --sort='committerdate:iso8601' --format=' %(color:yellow)%(committerdate:relative)%09%(color:white)%(refname:short)' refs/heads/
+    bd = git branch -d $(git branch --format "%(refname:short)" | fzf -m)
     t = tag
     td = tag -d
     pr = !gitman pr $(git remote get-url origin) $(git branch-name)
