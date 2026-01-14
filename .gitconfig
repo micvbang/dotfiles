@@ -43,7 +43,7 @@
 	tool = kdiff3
 [core]
 	excludesfile = ~/.gitignore
-    editor = vim
+    editor = nvim
 [push]
 	default = simple
 [filter "tabspace"]
