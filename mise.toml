@@ -1,0 +1,7 @@
+[tools]
+amp = "latest"
+aws-cli = "latest"
+aws-vault = "latest"
+go = "latest"
+neovim = "latest"
+node = "latest"
