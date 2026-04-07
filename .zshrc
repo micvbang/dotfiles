@@ -29,6 +29,7 @@ alias o=xdg-open
 alias v=aws-vault
 alias m=mise
 alias cb='xclip -sel clip'
+alias pcb='xclip -sel clip -o'
 alias dco=docker-compose
 
 export GOPRIVATE="git.haps.pw/*,gitlab.com/micvbang/*"
