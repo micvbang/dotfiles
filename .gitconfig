@@ -3,6 +3,7 @@
 	name = Michael Bang
 [alias]
     a = add -A
+    ap = "!f() { git add -N \"${@:-.}\" && git add -p \"${@:-.}\"; }; f"
     ai = add --interactive
     s = status -s
     cm = commit -m
