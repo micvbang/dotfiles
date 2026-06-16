@@ -51,6 +51,7 @@ let g:rehash256 = 1
 set number
 syntax on
 set smartindent
+set ignorecase
 set smartcase
 set autoindent
 set nobackup
@@ -83,6 +84,8 @@ setlocal nowrap
 set ruler
 
 :nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
+
+nnoremap <silent> <Leader>cr :%s/\r//g<CR>
 
 
 "Activate spell checking in .md documents.
