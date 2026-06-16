@@ -84,5 +84,34 @@
     "jupyter-notebook": "left"
   },
   "go.toolsManagement.autoUpdate": true,
-  "editor.largeFileOptimizations": false // formatting only supports LF line endings
+  "editor.largeFileOptimizations": false, // formatting only supports LF line endings
+    "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<leader>",
+        "r"
+      ],
+      "commands": [
+        "testing.runAtCursor"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "d"
+      ],
+      "commands": [
+        "testing.debugAtCursor"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "p"
+      ],
+      "commands": [
+        "copyRelativeFilePath"
+      ]
+    }
+  ]
 }

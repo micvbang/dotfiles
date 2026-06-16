@@ -112,5 +112,9 @@
   {
     "key": "ctrl+r",
     "command": "-workbench.action.openRecent"
+  },
+  {
+    "key": "ctrl+k ctrl+p",
+    "command": "copyRelativeFilePath",
   }
 ]
