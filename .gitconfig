@@ -8,7 +8,7 @@
     s = status -s
     cm = commit -m
     co = checkout
-    coi = "!git checkout $(git branch --format '%(refname:short)' | fzf)"
+    coi = !git checkout $(git for-each-ref --sort='-committerdate:iso8601' --format='%(refname:short)' refs/heads/ | fzf)
     cob = checkout -b
     ca = commit --amend
     c = commit
