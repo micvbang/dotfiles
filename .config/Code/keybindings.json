@@ -116,5 +116,10 @@
   {
     "key": "ctrl+k ctrl+p",
     "command": "copyRelativeFilePath",
+  },
+  {
+    "key": "ctrl+\\",
+    "command": "workbench.action.splitEditor",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal' && !inDebugRepl"
   }
 ]
