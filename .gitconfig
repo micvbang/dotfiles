@@ -22,10 +22,10 @@
     diffc = diff --cached
     branch-name = "!git rev-parse --abbrev-ref HEAD"
     pub = "!git push -u origin $(git branch-name)"
+    unpub = "!git push origin :$(git branch-name)"
     pubto = "!git push -u $@ $(git branch-name) #"
     pullo = "!git fetch && git reset --hard origin/$(git branch-name)"
     pubt = "!git push --tags -u origin $(git branch-name)"
-    unpub = "!git push origin :$(git branch-name)"
     gotag = !git tag -m "$1" -a
     wipr = for-each-ref --sort='committerdate:iso8601' --format=' %(color:yellow)%(committerdate:relative)%09%(color:white)%(refname:short)' refs/remotes/origin
     wip = for-each-ref --sort='committerdate:iso8601' --format=' %(color:yellow)%(committerdate:relative)%09%(color:white)%(refname:short)' refs/heads/
@@ -35,6 +35,8 @@
     pr = !gitman pr $(git remote get-url origin) $(git branch-name)
     sup = submodule update
     find = !git log --all --full-history -- "$@"
+    unwatch = "update-index --skip-worktree"
+    rewatch = "update-index --no-skip-worktree"
 [color]
     branch = auto
     diff = auto
